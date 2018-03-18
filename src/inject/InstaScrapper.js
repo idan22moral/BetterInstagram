@@ -36,7 +36,7 @@ class InstagramMediaDownloader {
         // Remove all the event listeners from the links
         for (let i = 0; i < links.length; i++)
             links[i].removeEventListener("click", (e) => this.switchSelection(a));
-        
+
         // Remove all the checkmark images
         let checkImages = document.getElementsByName(SELECTION_CHECK_NAME);
         for (let i = 0; i < checkImages.length; i++)
@@ -55,7 +55,7 @@ class InstagramMediaDownloader {
                 let imageLinks = [];
                 let media = jsonObject.graphql.shortcode_media;
                 let sidecars = media.edge_sidecar_to_children;
-                
+
                 // Save regularly if the post is a regular video/image post (not a sidecar)
                 if (sidecars === undefined) {
                     if (media.is_video)
@@ -75,8 +75,8 @@ class InstagramMediaDownloader {
                     }
                 }
                 return imageLinks;
-            });
-        });
+            }).catch((reason) =>console.log(`Error: ${reason}`));;
+        }).catch((reason) =>console.log(`Error: ${reason}`));
     }
 
 
@@ -162,7 +162,6 @@ class InstagramMediaDownloader {
                     // Add the links to the list
                     mediaLinks = mediaLinks.concat(links);
                     doneCount++;
-                    console.error(i);
 
                     // Check if we've finished the link gathering
                     if (i == selectedPosts.length - 1) {
@@ -174,7 +173,7 @@ class InstagramMediaDownloader {
                             }
                         }, 100);
                     }
-                });
+                }).catch((reason) =>console.log(`Error: ${reason}`));;
             }
         });
     }
