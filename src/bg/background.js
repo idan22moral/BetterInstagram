@@ -93,6 +93,7 @@ function createArchive(dataList, zipName) {
 
 	// Generate a ZIP file and let the user save it to the local storage
 	zip.generateAsync(zipSettings).then(file => {
+		console.log("File Zipped! Saving file...");
 		saveAs(file, `${zipName}.zip`);
 	});
 }
