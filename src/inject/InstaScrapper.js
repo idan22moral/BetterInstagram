@@ -9,6 +9,7 @@ const LINK_DIV_CSS_CLASS = "_6d3hm _mnav9";
 const INSTASCRAPPER_LINK_NAME = "instaScrapperLink";
 const SELECTION_CHECK_NAME = "selectionCheck";
 const CHECKMARK_LINK = "http://www.iconarchive.com/download/i103471/paomedia/small-n-flat/sign-check.ico";
+const USE_CREDENTIALS = {credentials: "same-origin"};
 
 /*
     This class is used for downloading and managing the selected media of the Instagram Profile.
@@ -50,7 +51,7 @@ class InstagramMediaDownloader {
      */
     getMediaLinksFromPost(postLink) {
         // Return a Promise that the function will return list of media links in post
-        return fetch(postLink).then((response) => {
+        return fetch(postLink, USE_CREDENTIALS).then((response) => {
             return response.json().then((jsonObject) => {
                 let imageLinks = [];
                 let media = jsonObject.graphql.shortcode_media;
