@@ -16,7 +16,7 @@ class InstaQualityImprover {
     apply()
     {
         addEventListener("DOMNodeInserted", (e) => {
-            improveSelectedMediaQuality();
+            this.improveSelectedMediaQuality();
         });
     }
 
