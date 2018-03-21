@@ -45,7 +45,7 @@ class InstaQualityImprover {
 
         // Change the source of the image to the best quality if necessary
         if(bestQuailtyImageLink !== imgElement.src)
-            imgElement.src = bestQuailtyImageLink;
+                imgElement.src = bestQuailtyImageLink;
     }
 
     /**
@@ -54,7 +54,7 @@ class InstaQualityImprover {
     improveSelectedMediaQuality()
     {
         for (const media of this.getMediaImageElements()) {
-            improveImageQuality(media);
+            this.improveImageQuality(media);
         }
     }
 }
