@@ -4,11 +4,15 @@
 */
 
 const mediaDownloader = new InstagramMediaDownloader();
+const qualityImprover = new InstaQualityImprover();
 
 chrome.extension.sendMessage({}, function (response) {
 	var readyStateCheckInterval = setInterval(() => {
 		if (document.readyState === "complete") {
 			clearInterval(readyStateCheckInterval);
+			
+			// Apply the event handler to the document
+			qualityImprover.apply();
 		}
 	}, 10);
 });

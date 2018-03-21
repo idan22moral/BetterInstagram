@@ -11,6 +11,16 @@ class InstaQualityImprover {
     }
 
     /**
+     * Applies an event handler to the document, that gets triggered when a valid media DOM Element is being inserted.
+     */
+    apply()
+    {
+        addEventListener("DOMNodeInserted", (e) => {
+            improveSelectedMediaQuality();
+        });
+    }
+
+    /**
      * Returns a List of image elements that contain instagram media.
      * @returns {Array<HTMLImageElement>} The List of image elements that contain instagram media.
      */
@@ -33,8 +43,9 @@ class InstaQualityImprover {
         // Save the best quality
         let bestQuailtyImageLink = imgElement.srcset.split(",").reverse()[0].split(" ")[0];
 
-        // Change the source of the image to the best quality
-        imgElement.src = bestQuailtyImageLink;
+        // Change the source of the image to the best quality if necessary
+        if(bestQuailtyImageLink !== imgElement.src)
+            imgElement.src = bestQuailtyImageLink;
     }
 
     /**
