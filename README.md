@@ -3,6 +3,14 @@ Instagram Profile Media Downloader that's implemented as a Chrome Extension
 
 ## Features
 - Download Profile Media
-
-## Working On
 - Media Quality Improver (on profile page)
+
+
+
+### How To Install
+#### Steps:
+1. Clone this repository using `git clone ...`
+2. Switch Chrome to 'Developer Mode' in the [Chrome Extensions Page](chrome://extensions/).
+![alt](https://imgur.com/lHzO2h0)
+3. third
+
