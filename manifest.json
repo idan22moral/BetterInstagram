@@ -1,9 +1,9 @@
 {
-  "name": "Instagram Scrapper",
-  "version": "0.0.1",
+  "name": "BetterInstagram",
+  "version": "1.0.0",
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'sha256-tXfPm3VVYx2svMVSOgD08ywoWiDtoY57HoYkyN/1iAI='; object-src 'self'",
-  "description": "Made by Idan Moral",
+  "description": "Chrome Extension that adds a spice to the Instagram using experience",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
