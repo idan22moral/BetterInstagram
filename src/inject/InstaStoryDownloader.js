@@ -11,8 +11,9 @@ class InstaStoryDownloader {
 
     apply() {
         addEventListener("DOMNodeInserted", (e) =>{
-            let isStory = e.srcElement.classList.contains(STORY_IMG_CLASS) || e.srcElement.classList.contains(STORY_VIDEO_CLASS);
-            if(e.srcElement && isStory)
+            let buttonDivs = document.getElementsByClassName(BUTTON_DIV_CLASS);
+            let downloadButtons = document.getElementsByClassName(DOWNLOAD_BUTTON_CLASS);
+            if(buttonDivs.length == 1 && downloadButtons.length == 0)
                 this.insertDownloadButton();
         });
     }
@@ -29,7 +30,6 @@ class InstaStoryDownloader {
         // Create the download button
         let downloadButton = document.createElement('button');
         downloadButton.classList.add(DOWNLOAD_BUTTON_CLASS);
-        downloadButton.style.backgroundImage = `url(${DOWNLOAD_IMG_URL});`;
         downloadButton.addEventListener("click", (e) => this.downloadCurrentStory());
 
         // Add the button to the document
@@ -43,10 +43,11 @@ class InstaStoryDownloader {
         let downloadUrl = this.getStoryLink();
         let randomFileName = Math.random().toString(36).substring(2);
         let format = downloadUrl.split(".").reverse()[0];
-        chrome.downloads.download({
-            url: downloadUrl,
-            filename: `${randomFileName}.${format}`
-        });
+        let downloadData = {};
+        downloadData.section = "story";
+        downloadData.url = downloadUrl;
+        downloadData.filename = `${randomFileName}.${format}`;
+        chrome.extension.sendMessage(downloadData, (res) => console.log("Background recieved download data."));
     }
 
     /**

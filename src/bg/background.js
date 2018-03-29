@@ -4,31 +4,40 @@
 */
 
 chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
-	chrome.pageAction.show(sender.tab.id);
-	console.log(request);
-	// Do nothing if the message is not a data to download
-	if (request.data === undefined) return;
+	if(request.section == "profile"){
+		chrome.pageAction.show(sender.tab.id);
+		console.log(request);
+		// Do nothing if the message is not a data to download
+		if (request.data === undefined) return;
 
-	// Create a ZIP File
-	let zipName = request.profileName || "images";
-	let mediaData = [];
-	let zip = new JSZip();
+		// Create a ZIP File
+		let zipName = request.profileName || "images";
+		let mediaData = [];
+		let zip = new JSZip();
 
-	// Download the data for each media in the data list
-	for (let i = 0; i < request.data.length; i++) {
-		const link = request.data[i];
-		downloadMedia(link, mediaData);
-		console.log(`Downloading ${i}`);
-	}
-
-	// Create The ZIP File and let the user download it to the local storage
-	let downloadInterval = setInterval(() => {
-		if (mediaData.length == request.data.length) {
-			createArchive(mediaData, zipName);
-			clearInterval(downloadInterval);
+		// Download the data for each media in the data list
+		for (let i = 0; i < request.data.length; i++) {
+			const link = request.data[i];
+			downloadMedia(link, mediaData);
+			console.log(`Downloading ${i}`);
 		}
-	}, 100);
 
+		// Create The ZIP File and let the user download it to the local storage
+		let downloadInterval = setInterval(() => {
+			if (mediaData.length == request.data.length) {
+				createArchive(mediaData, zipName);
+				clearInterval(downloadInterval);
+			}
+		}, 100);
+	}
+	else if(request.section == "story") {
+		if(!request.url || !request.filename) return;
+
+		chrome.downloads.download({
+			url: request.url,
+			filename: request.filename
+		});
+	}
 	sendResponse();
 });
 

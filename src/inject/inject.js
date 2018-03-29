@@ -5,14 +5,16 @@
 
 const mediaDownloader = new InstagramMediaDownloader();
 const qualityImprover = new InstaQualityImprover();
+const storyDownloader = new InstaStoryDownloader();
 
 chrome.extension.sendMessage({}, function (response) {
 	var readyStateCheckInterval = setInterval(() => {
 		if (document.readyState === "complete") {
 			clearInterval(readyStateCheckInterval);
 			
-			// Apply the event handler to the document
+			// Apply the event handlers to the document
 			qualityImprover.apply();
+			storyDownloader.apply();
 		}
 	}, 10);
 });
@@ -20,6 +22,7 @@ chrome.extension.sendMessage({}, function (response) {
 chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
 	// Create the response data object
 	let responseData = {};
+	responseData.section = "profile";
 	responseData.status = (request.active) ? "OK" : "DATA";
 
 	// If the user should select links, let him do it.
