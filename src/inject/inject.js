@@ -11,7 +11,7 @@ chrome.extension.sendMessage({}, function (response) {
 	var readyStateCheckInterval = setInterval(() => {
 		if (document.readyState === "complete") {
 			clearInterval(readyStateCheckInterval);
-			
+
 			// Apply the event handlers to the document
 			qualityImprover.apply();
 			storyDownloader.apply();
@@ -21,7 +21,7 @@ chrome.extension.sendMessage({}, function (response) {
 
 chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
 	// Create the response data object
-	let responseData = {};
+	var responseData = {};
 	responseData.section = "profile";
 	responseData.status = (request.active) ? "OK" : "DATA";
 

@@ -4,9 +4,12 @@
 */
 
 chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
+	chrome.pageAction.show(sender.tab.id);
+	console.log(request);
+	if(!request || !request.section) return;
+	
 	if(request.section == "profile"){
-		chrome.pageAction.show(sender.tab.id);
-		console.log(request);
+		
 		// Do nothing if the message is not a data to download
 		if (request.data === undefined) return;
 
@@ -38,6 +41,7 @@ chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
 			filename: request.filename
 		});
 	}
+
 	sendResponse();
 });
 

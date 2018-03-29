@@ -9,6 +9,9 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
+  "web_accessible_resources" : [
+    "images/*"
+  ],
   "background": {
     "scripts": [
       "src/bg/jszip.js",
@@ -35,6 +38,7 @@
     {
       "matches": [
         "https://www.instagram.com/*/"
+        
       ],
       "css": [
         "src/inject/inject.css"
@@ -42,7 +46,8 @@
     },
     {
       "matches": [
-        "https://www.instagram.com/*/"
+        "https://www.instagram.com/*/",
+        "https://www.instagram.com/*"
       ],
       "js": [
         "src/inject/InstaScrapper.js",

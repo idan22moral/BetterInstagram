@@ -8,7 +8,7 @@ const PROFILE_NAME_CSS_CLASS = "_rf3jb notranslate";
 const LINK_DIV_CSS_CLASS = "_6d3hm _mnav9";
 const INSTASCRAPPER_LINK_NAME = "instaScrapperLink";
 const SELECTION_CHECK_NAME = "selectionCheck";
-const CHECKMARK_LINK = "http://www.iconarchive.com/download/i103471/paomedia/small-n-flat/sign-check.ico";
+const CHECKMARK_LINK = chrome.extension.getURL("/images/checkMark.ico");
 const USE_CREDENTIALS = {credentials: "same-origin"};
 
 /*
