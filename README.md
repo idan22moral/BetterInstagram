@@ -5,6 +5,7 @@ Chrome Extension that adds a spice to the Instagram using experience.
 - Download Profile Media
 - Download Story Content (of public or followed profiles)
 - Media Quality Improver (on profile page)
+- Feed Media Selector (downloads after selection)
 
 ## Installation
 1. Clone this repository using `git clone https://github.com/idan22moral/BetterInstagram.git`
