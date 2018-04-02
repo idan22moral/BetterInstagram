@@ -54,6 +54,7 @@
         "src/inject/InstaScrapper.js",
         "src/inject/InstaQualityImprover.js",
         "src/inject/InstaStoryDownloader.js",
+        "src/inject/InstaMediaSelector.js",
         "src/inject/inject.js"
       ]
     }

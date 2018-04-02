@@ -6,6 +6,7 @@
 const mediaDownloader = new InstagramMediaDownloader();
 const qualityImprover = new InstaQualityImprover();
 const storyDownloader = new InstaStoryDownloader();
+const mediaSelector = new InstaMediaSelector();
 
 chrome.extension.sendMessage({}, function (response) {
 	var readyStateCheckInterval = setInterval(() => {
@@ -15,6 +16,7 @@ chrome.extension.sendMessage({}, function (response) {
 			// Apply the event handlers to the document
 			qualityImprover.apply();
 			storyDownloader.apply();
+			mediaSelector.apply();
 		}
 	}, 10);
 });

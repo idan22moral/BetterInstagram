@@ -33,7 +33,7 @@ chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
 			}
 		}, 100);
 	}
-	else if(request.section == "story") {
+	else if(request.section == "story" || request.section == "selector") {
 		if(!request.url || !request.filename) return;
 
 		chrome.downloads.download({
