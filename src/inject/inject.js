@@ -16,7 +16,8 @@ chrome.extension.sendMessage({}, function (response) {
 			// Apply the event handlers to the document
 			qualityImprover.apply();
 			storyDownloader.apply();
-			mediaSelector.apply();
+			if (location.href != "https://www.instagram.com/")
+				mediaSelector.apply();
 		}
 	}, 10);
 });

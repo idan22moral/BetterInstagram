@@ -8,7 +8,7 @@ chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
 	console.log(request);
 	if(!request || !request.section) return;
 	
-	if(request.section == "profile"){
+	if(request.section == "zip"){
 		
 		// Do nothing if the message is not a data to download
 		if (request.data === undefined) return;
@@ -33,7 +33,7 @@ chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
 			}
 		}, 100);
 	}
-	else if(request.section == "story" || request.section == "selector") {
+	else if(request.section == "single") {
 		if(!request.url || !request.filename) return;
 
 		chrome.downloads.download({

@@ -8,7 +8,7 @@ const ACTIVATE = "Activate";
 const UNACTIVATE = "Download";
 
 chrome.storage.sync.get("activated", (status) => {
-    // Load the activation status from the storage // || !status.hasOwnProperty("activated")
+    // Load the activation status from the storage //
     activationStatus = (status.activated === undefined) ? false : status.activated;
 
     // Initialize the activation button

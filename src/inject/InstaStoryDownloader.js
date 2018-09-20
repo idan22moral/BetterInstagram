@@ -1,8 +1,8 @@
 const DOWNLOAD_IMG_URL = "https://i.imgur.com/dmt8sIL.png";
 const DOWNLOAD_BUTTON_CLASS = "downloadButton";
-const BUTTON_DIV_CLASS = "_2tt3z";
-const STORY_IMG_CLASS = "_ro0gg";
-const STORY_VIDEO_CLASS = "_6kyf0";
+const BUTTON_DIV_CLASS = "GDXNY";
+const STORY_IMG_CLASS = "_7NpAS";
+const STORY_VIDEO_CLASS = "OFkrO";
 
 class InstaStoryDownloader {
     constructor() {
@@ -10,10 +10,10 @@ class InstaStoryDownloader {
     }
 
     apply() {
-        addEventListener("DOMNodeInserted", (e) =>{
+        addEventListener("DOMNodeInserted", (e) => {
             let buttonDivs = document.getElementsByClassName(BUTTON_DIV_CLASS);
             let downloadButtons = document.getElementsByClassName(DOWNLOAD_BUTTON_CLASS);
-            if(buttonDivs.length == 1 && downloadButtons.length == 0)
+            if (buttonDivs.length == 1 && downloadButtons.length == 0)
                 this.insertDownloadButton();
         });
     }
@@ -42,9 +42,9 @@ class InstaStoryDownloader {
     downloadCurrentStory() {
         let downloadUrl = this.getStoryLink();
         let randomFileName = Math.random().toString(36).substring(2);
-        let format = downloadUrl.split(".").reverse()[0];
+        let format = downloadUrl.split(".").reverse()[0].split('?')[0];
         let downloadData = {};
-        downloadData.section = "story";
+        downloadData.section = "single";
         downloadData.url = downloadUrl;
         downloadData.filename = `${randomFileName}.${format}`;
         chrome.extension.sendMessage(downloadData, (res) => console.log("Background recieved download data."));
