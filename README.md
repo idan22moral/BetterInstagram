@@ -1,5 +1,5 @@
 # BetterInstagram [Deprecated]
-Chrome Extension that adds a spice to the Instagram experience.  
+Chrome Extension that will add a spice to your Instagram experience.  
 This project is deprecated due to changes in the way Instagram works,  
 but I left the project here for future reference and a base for rework
 that might come in the future.
